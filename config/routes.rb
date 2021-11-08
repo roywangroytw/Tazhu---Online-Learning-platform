@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # path 2: "/about" 關於我們，靜態網頁直接共享pages controller
   get "/about", to: "pages#about"
 
+  # 會員註冊頁面
+  get "/sign_up", to: "users#sign_up"
+
 end
