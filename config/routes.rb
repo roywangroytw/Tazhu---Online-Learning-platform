@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   # 會員註冊頁面
   get "/sign_up", to: "users#sign_up"
+  post "/registering", to: "users#registering"
 
 end
