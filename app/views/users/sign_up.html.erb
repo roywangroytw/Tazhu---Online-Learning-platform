@@ -1,16 +1,23 @@
 <h1>會員註冊</h1>
-<!-- 機密相關的表單用post比較恰當，因為用get的話會把name & field data顯示在url上 -->
-<!-- form the method 只有支援 post / get -->
-<form action="/registering" method="post">
-  <!-- 以下這行是rails自己聰明的方式去bypass html表單目前只支援post/get的方式 -->
-  <!-- <input type="hidden" name="_method" value="put" /> -->
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>"
-  />
-  <input type="text" name="username" />
-  <input type="password" name="password" />
-  <input type="password" name="password_confirm" />
-  <input type="submit" value="註冊" />
-</form>
+
+<%= form_for(@user, url: '/registering') do |form| %>
+<div class="field">
+  <%= form.label :username, 'Account' %> <br />
+  <%= form.text_field :username, placeholder: 'Pick a name' %>
+</div>
+
+<div class="field">
+  <%= form.label :password, 'Password' %> <br />
+  <%= form.password_field :password, placeholder: '******' %>
+</div>
+
+<div class="field">
+  <%= form.label :email, 'Email' %> <br />
+  <%= form.email_field :email, placeholder: 'aaa@gmail.com' %>
+</div>
+
+<div class="submit">
+  <%= form.submit 'Sign Up'%> <%#= form.submit 'Sign Up'%>
+</div>
+
+<% end %>
