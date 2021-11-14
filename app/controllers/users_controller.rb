@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         else
             # 借sign_up.html_erb的畫面來用，但是還保留沒有問題欄位的值
             render :sign_up
-            flash[:alert] = "Account can't be blank!"
+            # flash[:alert] = "Account can't be blank!"
         end
 
     end
