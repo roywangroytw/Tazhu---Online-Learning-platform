@@ -18,6 +18,8 @@
   display: inline;
 }
 
-.field_with_errors input[type="text"] {
+.field_with_errors input[type="text"],
+.field_with_errors input[type="email"],
+.field_with_errors input[type="password"] {
   border: 1px solid red;
 }

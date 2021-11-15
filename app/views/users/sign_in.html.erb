@@ -1,0 +1,23 @@
+
+<% if @user.errors.any? %> <% @user.errors.full_messages.each do |message| %>
+    <div><%= message %></div>
+    <% end %> <% end %>
+
+<h1>會員登入</h1>
+
+<%= form_for(@user, url: '/sign_in/check') do |form| %>
+<div class="field">
+  <%= form.label :username, 'Account' %> <br />
+  <%= form.text_field :username, placeholder: 'Your account' %>
+</div>
+
+<div class="field">
+  <%= form.label :password, 'Password' %> <br />
+  <%= form.password_field :password, placeholder: 'Your password' %>
+</div>
+
+<div class="submit">
+  <%= form.submit 'Sign Up'%> <%#= form.submit 'Sign In'%>
+</div>
+
+<% end %>
