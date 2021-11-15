@@ -28,6 +28,27 @@ class UsersController < ApplicationController
     end
 
     def check
+
+        # email = params[:user][:email]
+        # password = params[:user][:password]
+
+        # salted_password = "xyz#{password.reverse}hellohey"
+        # encrypted_password = Digest::SHA1.hexdigest(salted_password)
+
+        # u = User.find_by(email: email, password: encrypted_password)
+
+        # 以上太囉唆了，可以把他們寫在Model的地方，定義一個login類別方法
+
+        clean_params = params.require(:user).permit(:password, :email)
+
+        u = User.login(clean_params)
+
+        if u
+            render html: "OK!"
+        else
+            redner html: "Not OK!"
+        end   
+
     end
 
 

@@ -17,6 +17,20 @@ class User < ApplicationRecord
 
     before_create :encrypt_password
 
+    def self.login(user_info)
+    
+        email = user_info[:email]
+        password = user_info[:password]
+
+        salted_password = "xyz#{password.reverse}hellohey"
+        encrypted_password = Digest::SHA1.hexdigest(salted_password)
+
+        User.find_by(email: email, password: encrypted_password)
+        # self.find_by(email: email, password: encrypted_password)
+        # find_by(email: email, password: encrypted_password)
+
+    end
+
     private
 
     def encrypt_password
