@@ -44,7 +44,11 @@ class UsersController < ApplicationController
         u = User.login(clean_params)
 
         if u
-            render html: "OK!"
+            #[:member_seesion] 這其實可以自己隨意命名
+            # u.id 這邊其實也可以自己決定要怎麼寫，老師示範的例子是直接拿uid來當作session id
+            session[:member_sesssion] = u.id
+            flash[:notice] = "已登入，歡迎回來！"
+            redirect_to "/"
         else
             redner html: "Not OK!"
         end   
