@@ -6,12 +6,9 @@ class UsersController < ApplicationController
 
     def registering
         
-        # 資料清理
-        clean_params = params.require(:user).permit(:username, :password, :email)
-        # clean_params = params[:user].permit(:username, :password, :email)
 
         #把表單傳過來的hash資料喂給實體User.new
-        @user = User.new(clean_params)
+        @user = User.new(user_params)
         if @user.save    
             #註冊資料寫入後端之後，註冊成功，redirect到首頁
             redirect_to "/"
@@ -39,9 +36,7 @@ class UsersController < ApplicationController
 
         # 以上太囉唆了，可以把他們寫在Model的地方，定義一個login類別方法
 
-        clean_params = params.require(:user).permit(:password, :email)
-
-        u = User.login(clean_params)
+        u = User.login(user_params)
 
         if u
             #[:member_seesion] 這其實可以自己隨意命名
@@ -50,10 +45,19 @@ class UsersController < ApplicationController
             flash[:notice] = "已登入，歡迎回來！"
             redirect_to "/"
         else
-            redner html: "Not OK!"
+            render html: "Not OK!"
         end   
 
     end
 
+    private
+
+    def user_params
+
+        # 資料清理
+        clean_params = params.require(:user).permit(:password, :email)
+        # clean_params = params[:user].permit(:username, :password, :email)
+        
+    end
 
 end

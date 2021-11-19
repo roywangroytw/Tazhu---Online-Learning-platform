@@ -1,0 +1,9 @@
+<h1>課程列表</h1>
+
+<!-- <#% if user_signed_in? %> -->
+<!-- 用 path prefix去寫url -->
+    <!-- <#%= link_to "新增課程", new_course_path %> -->
+<!-- <#% end %> -->
+
+<!-- 用 path prefix去寫url -->
+<%= link_to "新增課程", new_course_path if user_signed_in? %>
