@@ -1,6 +1,9 @@
 class CoursesController < ApplicationController
 
-    def index; end   
+    # HWpractice part - Getting all data to show the course list in course index page
+    def index
+        @course_list = Course.all
+    end   
     
     def new
         @course = Course.new
@@ -20,6 +23,19 @@ class CoursesController < ApplicationController
         # redirect_to courses_path
         # render html: params
     end
+
+    # HWpractice part - creating actions for edit
+    def edit
+    end   
+    
+    # HWpractice part - creating actions for update
+    def update
+    end
+
+    # HWpractice part - creating actions for delete
+    def delete
+    end
+
 
     private 
 

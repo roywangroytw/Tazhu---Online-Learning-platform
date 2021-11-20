@@ -1,0 +1,109 @@
+
+.page-title {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.course-overview,
+.course-overview td,
+.course-overview th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.course-list {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.course-item {
+    box-sizing: border-box;
+    width: calc( 33.3333% - 20px );
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    position: relative;
+    box-shadow: 0px 0px 20px rgb(189, 189, 189);
+}
+
+.course-item img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    vertical-align: middle;
+}
+
+.course-number-box {
+    display: flex;
+    align-items: center;
+}
+
+.course-number-box * {
+    width: 50%;
+}
+
+.course-title {
+    line-height: 30px;
+}
+
+.course-price {
+    border-right: 1px solid black;
+}
+
+.course-intro {
+    padding:  20px;
+}
+
+.course-title,
+.course-number-box {
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+.course-price:before {
+    content: "NTD "
+}
+
+.course-duration:after {
+    content: " hour(s)"
+}
+
+.course-link {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.add-course-btn {
+    display: block;
+    width: 150px;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+    background-color: black;
+    color: white;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+.add-course-btn:hover {
+
+    background-color: rgb(0, 174, 255);
+}
+
+.course-link:hover {
+
+    border: 4px solid rgb(0, 174, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgb(0, 174, 255);
+
+}
