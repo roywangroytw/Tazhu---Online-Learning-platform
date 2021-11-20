@@ -23,6 +23,11 @@
         <%= f.number_field :hour %>
     </div>
 
-    <%= f.submit "更新課程內容" %>
+    <div class="individual-course-btn-box">
+        <%= f.submit "更新課程內容" %>
+    <!-- # HWpractice part - adding delete button -->
+        <%= link_to 'Delete',url_for(action: :destroy, id: @course.id), method: :delete, data: {confirm: "Are you sure?"}, class: "course-delete-btn" %>
+    </div>
+
 
 <% end %>

@@ -26,13 +26,13 @@ class CoursesController < ApplicationController
 
     # HWpractice part - creating actions for edit
     def edit
-        @course = Course.find_by(params[:id])
+        @course = Course.find_by(id: params[:id])
     end   
     
     # HWpractice part - creating actions for update
     def update
 
-        @course = Course.find_by(params[:id])
+        @course = Course.find_by(id: params[:id])
 
         if @course.update(course_params)
             redirect_to courses_path
@@ -42,7 +42,14 @@ class CoursesController < ApplicationController
     end
 
     # HWpractice part - creating actions for delete
-    def delete
+    def destroy
+        @course = Course.find_by(params[:id])
+
+        if @course.destroy
+            redirect_to courses_path
+        else
+            render :edit
+        end        
     end
 
 
