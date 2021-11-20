@@ -26,10 +26,19 @@ class CoursesController < ApplicationController
 
     # HWpractice part - creating actions for edit
     def edit
+        @course = Course.find_by(params[:id])
     end   
     
     # HWpractice part - creating actions for update
     def update
+
+        @course = Course.find_by(params[:id])
+
+        if @course.update(course_params)
+            redirect_to courses_path
+        else
+            render :edit
+        end
     end
 
     # HWpractice part - creating actions for delete
