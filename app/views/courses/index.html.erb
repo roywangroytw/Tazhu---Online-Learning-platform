@@ -1,4 +1,4 @@
-<h1>課程列表</h1>
+<h1 class="page-title">課程列表</h1>
 
 <!-- <#% if user_signed_in? %> -->
 <!-- 用 path prefix去寫url -->
@@ -6,4 +6,24 @@
 <!-- <#% end %> -->
 
 <!-- 用 path prefix去寫url -->
-<%= link_to "新增課程", new_course_path if user_signed_in? %>
+<%= link_to "新增課程", new_course_path, class: "add-course-btn" if user_signed_in? %>
+
+<div class="course-list">
+
+    <% @course_list.each do |data| %>
+
+        <div class="course-item">
+            <img src="https://fakeimg.pl/300x100/000000">
+            <h2 class="course-title"><%= data[:name] %></h2>
+            <div class="course-number-box">
+                <h3 class="course-price"><%= data[:price] %></h3>
+                <h3 class="course-duration"><%= data[:hour] %></h3>
+            </div>
+            <p class="course-intro"><%= data[:intro] %></p>
+            <%= link_to "", edit_course_path(data[:id]), class: "course-link" %>
+        </div>
+
+    <% end %>
+
+</div>
+
