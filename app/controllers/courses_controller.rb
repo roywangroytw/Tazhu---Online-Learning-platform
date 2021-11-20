@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
 
     # HWpractice part - creating actions for delete
     def destroy
-        @course = Course.find_by(params[:id])
+        @course = Course.find_by(id: params[:id])
 
         if @course.destroy
             redirect_to courses_path
