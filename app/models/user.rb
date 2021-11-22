@@ -3,7 +3,7 @@ require 'digest'
 
 class User < ApplicationRecord
 
-    has_one :course
+    has_many :courses
 
     validates :username, presence: true
     # validates (:username, {presence: true})

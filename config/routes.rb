@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get "sign_in", to: "users#sign_in"
   post "sign_in/check", to: "users#check"
 
+  # 會員登出
+  delete "sign_out", to: "users#sign_out"
+
   # 課程列表
   resources :courses
 

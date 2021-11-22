@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     end
 
     def registering
-        
 
         #把表單傳過來的hash資料喂給實體User.new
         @user = User.new(user_params)
@@ -50,12 +49,18 @@ class UsersController < ApplicationController
 
     end
 
+    def sign_out
+        session[:member_sesssion] = nil
+        flash[:notice] = "已登出"
+        redirect_to "/"
+    end
+
     private
 
     def user_params
 
         # 資料清理
-        clean_params = params.require(:user).permit(:password, :email)
+        clean_params = params.require(:user).permit(:username, :password, :email)
         # clean_params = params[:user].permit(:username, :password, :email)
         
     end
