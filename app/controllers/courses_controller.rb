@@ -13,6 +13,17 @@ class CoursesController < ApplicationController
         @course = Course.new
     end
 
+    def show
+      @course = Course.find(params[:id])
+      @review = Review.new
+
+      # show reviews belongs to this course
+      @reviews = @course.reviews # getter ( in course model has_many :reviews ) # lazy load
+      # @reviews = Review.where(course_id: @course.id)
+      # @reviews = Review.where(course: @course)
+
+    end
+
     def create
 
         # @course = Course.new(course_params)
@@ -36,10 +47,15 @@ class CoursesController < ApplicationController
 
     def edit
         # @course = Course.find_by(id: params[:id])
+
+        # 如果下方的find_course方法是使用find_by(如果找不到@course, 會回傳nil)
         if @course == nil
             flash[:notice] = "不可以編輯他人課程"
             redirect_to courses_path
         end    
+        # 但下方的方法使用find, 找不到會噴錯 'RecordNotFound'，所以這段code其實用不到
+        
+
     end
 
     def update
@@ -68,14 +84,6 @@ class CoursesController < ApplicationController
 
     def course_params
         params.require(:course).permit(:name, :price, :intro, :hour)
-    end
-
-    # 拿來使用callback確保某些頁面一定要登入才可以看到，控制權限
-    
-    def login?
-        if not user_signed_in?
-            redirect_to sign_in_path, notice: '請先登入'
-        end    
     end
 
     def find_course

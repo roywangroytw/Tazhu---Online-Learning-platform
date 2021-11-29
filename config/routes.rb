@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   # 會員登出
   delete "sign_out", to: "users#sign_out"
 
-  # 課程列表
-  resources :courses
+  # 課程列表 + reviews
+  resources :courses do
+    resources :reviews, only: [:create]
+  end
+  resources :reviews, only: [:destroy]
 
 end
