@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
       @review = Review.new
 
       # show reviews belongs to this course
-      @reviews = @course.reviews # getter ( in course model has_many :reviews ) # lazy load
+      @reviews = @course.reviews.order(id: :desc) # getter ( in course model has_many :reviews ) # lazy load
       # @reviews = Review.where(course_id: @course.id)
       # @reviews = Review.where(course: @course)
 

@@ -1,0 +1,19 @@
+
+const reviewContainer = document.querySelector("div.reviewContainer");
+
+// 先漲一個殼
+const box = document.createElement("div");
+
+// 殼裡面要加的html內容
+const reviewContent = `<section class="reviews">Rating: <%= "★" * @review.rating %><%= "☆" * (5 -@review.rating) %>
+    <article>
+      <header><%= @review.title %></header>
+      <p><%= @review.content %></p>
+    </article>
+  </section>
+`
+// 把內容指定給殼的innerText
+box.innerHTML = reviewContent;
+
+// 把box加到container
+reviewContainer.insertAdjacentElement('afterbegin', box.firstChild);

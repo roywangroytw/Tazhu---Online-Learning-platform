@@ -1,6 +1,6 @@
 <h1>Course Details</h1>
 
-<%= form_for(@review, url: course_reviews_path(@course)) do |f| %>
+<%= form_for(@review, url: course_reviews_path(@course), remote: true) do |f| %>
 
   <div>
     <%= f.label :rating, "Rating" %><br>
@@ -25,12 +25,14 @@
 
 <h2>Course Reviews</h2>
 
-<% @reviews.each do |review| %>
-  <section class="reviews">
-    Rating: <%= "★" * review.rating %><%= "☆" * (5 -review.rating) %>
-    <article>
-      <header><%= review.title %></header>
-      <p><%= review.content %></p>
-    </article>
-  </section>
-<% end %>
+<div class="reviewContainer">
+  <% @reviews.each do |review| %>
+    <section class="reviews">
+      Rating: <%= "★" * review.rating %><%= "☆" * (5 -review.rating) %>
+      <article>
+        <header><%= review.title %></header>
+        <p><%= review.content %></p>
+      </article>
+    </section>
+  <% end %>
+</div>
